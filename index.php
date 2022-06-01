@@ -139,7 +139,7 @@ if (array_key_exists('superpowers', $trimmedPost)) {
 }
 
 if (!isset($trimmedPost['contract'])) {
-    $errorOutput .= 'Вы не ознакомились с контрактом.<br/>';
+    $errorOutput .= 'Вы не ознакомились с условием.<br/>';
     $errors['contract'] = TRUE;
     $hasErrors = TRUE;
 }

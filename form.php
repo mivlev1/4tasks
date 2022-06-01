@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&family=Poppins:wght@500&display=swap" rel="stylesheet">
-    <title>Kozin Task4</title>
+    <title>4tasks</title>
 </head>
 <body>
 <div class="main">
@@ -12,9 +12,9 @@
     if ($errorOutput) {
         print('<section id="messages">');
         if ($hasErrors)
-            print('<h2>Ошибка</h2>');
+            print('<h2>Ошибка!</h2>');
         else
-            print('<h2>Сообщения</h2>');
+            print('<h2>Успешно!</h2>');
         print($errorOutput);
         print('</section>');
     }
@@ -52,10 +52,6 @@
                           name="gender" value="F" <?php if ($values['gender'] == 'F') {print 'checked';} ?> />
                 женский
             </label>
-            <label><input type="radio"
-                          name="gender" value="O" <?php if ($values['gender'] == 'O') {print 'checked';} ?> />
-                другое
-            </label>
             <br />
 
             Количество конечностей:<br />
@@ -71,12 +67,7 @@
                           name="limbs" value="4" />
                 4
             </label>
-            <label><input type="radio" <?php if ($values['limbs'] == '5') {print 'checked';} ?>
-                          name="limbs" value="5" />
-                5+
-            </label>
             <br />
-
             <label>
                 Сверхспособности:
                 <br />
@@ -87,14 +78,12 @@
                     <option value="2" <?php if ($values['superpowers']['2']) {print 'selected';} ?>>Левитация</option>
                 </select>
             </label><br />
-
             <br />
             <label <?php if (array_key_exists('contract', $errors)) {print 'class="error"';} ?>>
                 <input type="checkbox"
                        name="contract" <?php if ($values['contract']) {print 'checked';} ?>/>
                 С условиями ознакомлен
             </label><br />
-
             <input id="submit" type="submit" value="Отправить" />
         </form>
     </section>

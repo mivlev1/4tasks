@@ -3,7 +3,7 @@
 }
 
 body {
-    background-color: rgb(39, 34, 129);
+    background-color: aliceblue;
     font-family: 'Noto Sans', sans-serif;
     margin: 0;
 }
@@ -11,10 +11,8 @@ body {
 nav {
     margin: 0 auto;
     max-width: 960px;
-    background-color: #275591;
-    border: ridge 6px #9ab4d5;
-    border-top: none;
-    border-radius: 0px 0px 10px 10px;
+    background-color: white;
+    box-shadow: 0 0 5px 2px black;
 }
 
 nav ul {
@@ -36,10 +34,9 @@ nav li {
 
 section {
     padding: 20px 40px;
-    background-color: rgb(199, 199, 199);
+    background-color: white;
     margin: 10px 0;
-    border: ridge 6px #9ab4d5;
-    border-radius: 10px;
+    box-shadow: 0 0 5px 2px black;
 }
 
 .header {
@@ -138,11 +135,6 @@ input[type='submit']:hover {
     border: 2px solid red;
 }
 
-footer {
-    background-color: rgb(39, 34, 129);
-    color: #fff;
-    padding: 10px 50px;
-}
 
 header {
     background-color: rgb(39, 34, 129);
