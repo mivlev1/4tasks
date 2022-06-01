@@ -13,7 +13,6 @@ $defaultValues = [
     'birthday' => '',
     'gender' => 'O',
     'limbs' => '4',
-
     'contract' => ''
 ];
 // Складываем предыдущие значения полей в массив, если есть.
@@ -73,7 +72,7 @@ if (empty($trimmedPost['name'])) {
     setcookie('name_error', 'true');
     $hasErrors = TRUE;
 } else {
-    // Удаляем куку, указывая время устаревания в прошлом.
+    // Удаляем куки, указывая время устаревания в прошлом.
     setcookie('name_error', '', 10000);
     $errors['name'] = '';
 }
@@ -87,7 +86,7 @@ if (!preg_match('/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/', $trimmedPo
     setcookie('email_error', 'true');
     $hasErrors = TRUE;
 } else {
-    // Удаляем куку, указывая время устаревания в прошлом.
+    // Удаляем куки, указывая время устаревания в прошлом.
     setcookie('email_error', '', 10000);
     $errors['email'] = '';
 }
@@ -151,18 +150,19 @@ if ($hasErrors) {
     exit();
 }
 //Далее обычная работа с бд
-$user = 'u41733';
-$pass = '6809062';
-$db = new PDO('mysql:host=localhost;dbname=u41733', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
+$user = 'u41731';
+$pass = '7439940';
+$db = new PDO('mysql:host=localhost;dbname=u41731', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
 
 try {
     $db->beginTransaction();
-    $stmt1 = $db->prepare("INSERT INTO forms SET name = ?, email = ?, birthday = ?, 
+    $stmt1 = $db->prepare("INSERT INTO application SET id = ?, name = ?, email = ?, birthday = ?, 
     gender = ? , limb_number = ?");
     $stmt1 -> execute([$trimmedPost['name'], $trimmedPost['email'], $trimmedPost['birthday'],
         $trimmedPost['gender'], $trimmedPost['limbs']]);
-    $stmt2 = $db->prepare("INSERT INTO form_ability SET form_id = ?, ability_id = ?");
     $id = $db->lastInsertId();
+    $stmt2 = $db->prepare("INSERT INTO power SET id = ?, ability_id = ?");
+
     foreach ($trimmedPost['superpowers'] as $s)
         $stmt2 -> execute([$id, $s]);
     $db->commit();

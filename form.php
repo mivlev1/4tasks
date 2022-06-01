@@ -59,14 +59,6 @@
             <br />
 
             Количество конечностей:<br />
-            <label><input type="radio" <?php if ($values['limbs'] == '0') {print 'checked';} ?>
-                          name="limbs" value="0" />
-                0
-            </label>
-            <label><input type="radio" <?php if ($values['limbs'] == '1') {print 'checked';} ?>
-                          name="limbs" value="1" />
-                1
-            </label>
             <label><input type="radio" <?php if ($values['limbs'] == '2') {print 'checked';} ?>
                           name="limbs" value="2" />
                 2
@@ -100,7 +92,7 @@
             <label <?php if (array_key_exists('contract', $errors)) {print 'class="error"';} ?>>
                 <input type="checkbox"
                        name="contract" <?php if ($values['contract']) {print 'checked';} ?>/>
-                С контрактом ознакомлен
+                С условиями ознакомлен
             </label><br />
 
             <input id="submit" type="submit" value="Отправить" />
