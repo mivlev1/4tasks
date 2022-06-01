@@ -96,11 +96,6 @@
                 </select>
             </label><br />
 
-            <label>
-                Биография:<br />
-                <textarea name="biography"><?php print $values['biography']; ?></textarea>
-            </label><br />
-
             <br />
             <label <?php if (array_key_exists('contract', $errors)) {print 'class="error"';} ?>>
                 <input type="checkbox"

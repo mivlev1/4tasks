@@ -13,12 +13,12 @@ $defaultValues = [
     'birthday' => '',
     'gender' => 'O',
     'limbs' => '4',
-    'biography' => 'Все началось когда я родился...',
+
     'contract' => ''
 ];
 // Складываем предыдущие значения полей в массив, если есть.
 $values = array();
-foreach (['name', 'email', 'birthday', 'gender', 'limbs', 'biography', 'contract'] as $key) {
+foreach (['name', 'email', 'birthday', 'gender', 'limbs', 'contract'] as $key) {
     $values[$key] = !array_key_exists($key . '_value', $_COOKIE) ? $defaultValues[$key] : $_COOKIE[$key . '_value'];
 }
 foreach (['name', 'email', 'birthday'] as $key) {
@@ -138,8 +138,7 @@ if (array_key_exists('superpowers', $trimmedPost)) {
         $values['superpowers'][$value] = TRUE;
     }
 }
-setcookie('biography_value', $trimmedPost['biography'], time() + 30 * 24 * 60 * 60);
-$values['biography'] = $trimmedPost['biography'];
+
 if (!isset($trimmedPost['contract'])) {
     $errorOutput .= 'Вы не ознакомились с контрактом.<br/>';
     $errors['contract'] = TRUE;
@@ -159,9 +158,9 @@ $db = new PDO('mysql:host=localhost;dbname=u41733', $user, $pass, array(PDO::ATT
 try {
     $db->beginTransaction();
     $stmt1 = $db->prepare("INSERT INTO forms SET name = ?, email = ?, birthday = ?, 
-    gender = ? , limb_number = ?, biography = ?");
+    gender = ? , limb_number = ?");
     $stmt1 -> execute([$trimmedPost['name'], $trimmedPost['email'], $trimmedPost['birthday'],
-        $trimmedPost['gender'], $trimmedPost['limbs'], $trimmedPost['biography']]);
+        $trimmedPost['gender'], $trimmedPost['limbs']]);
     $stmt2 = $db->prepare("INSERT INTO form_ability SET form_id = ?, ability_id = ?");
     $id = $db->lastInsertId();
     foreach ($trimmedPost['superpowers'] as $s)
