@@ -156,7 +156,7 @@ $db = new PDO('mysql:host=localhost;dbname=u41731', $user, $pass, array(PDO::ATT
 
 try {
     $db->beginTransaction();
-    $stmt1 = $db->prepare("INSERT INTO application SET id = ?, name = ?, email = ?, birthday = ?, 
+    $stmt1 = $db->prepare("INSERT INTO application SET name = ?, email = ?, birthday = ?, 
     gender = ? , limb_number = ?");
     $stmt1 -> execute([$trimmedPost['name'], $trimmedPost['email'], $trimmedPost['birthday'],
         $trimmedPost['gender'], $trimmedPost['limbs']]);
