@@ -106,7 +106,7 @@ if (!preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/', $trimmedPost['birthday'])) {
 setcookie('birthday_value', $trimmedPost['birthday'], time() + 30 * 24 * 60 * 60);
 $values['birthday'] = $trimmedPost['birthday'];
 
-if (!preg_match('/^[MFO]$/', $trimmedPost['gender'])) {
+if (!preg_match('/^[MF]$/', $trimmedPost['gender'])) {
     $errorOutput .= 'Заполните пол.<br/>';
     $errors['gender'] = TRUE;
     $hasErrors = TRUE;
@@ -114,7 +114,7 @@ if (!preg_match('/^[MFO]$/', $trimmedPost['gender'])) {
 setcookie('gender_value', $trimmedPost['gender'], time() + 30 * 24 * 60 * 60);
 $values['gender'] = $trimmedPost['gender'];
 
-if (!preg_match('/^[0-5]$/', $trimmedPost['limbs'])) {
+if (!preg_match('/^[2-4]$/', $trimmedPost['limbs'])) {
     $errorOutput .= 'Заполните количество конечностей.<br/>';
     $errors['limbs'] = TRUE;
     $hasErrors = TRUE;
